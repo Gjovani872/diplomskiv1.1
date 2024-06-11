@@ -14,7 +14,15 @@
         <h1>No Access</h1>
         <p>You do not have permission to view this page.</p>
 
-        <a href="<?= base_url(session()->get('role_name') . '/home') ?>" class="btn btn-primary">Go to Home</a>
+        <?php if (session()->get('user_id')): ?>
+            <a href="<?= base_url(session()->get('role_name') . '/home') ?>" class="btn btn-primary">Go to Home</a>
+        <?php else: ?>
+            <?php
+            // Redirect to the login page
+            header('Location: ' . base_url('/'));
+            exit();
+            ?>
+        <?php endif; ?>
     </div>
 </body>
 
