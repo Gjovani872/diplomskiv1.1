@@ -28,6 +28,20 @@ $routes->get('student/home', 'HomeController::index/student', ['filter' => 'rbac
 $routes->get('superadmin/home', 'HomeController::index/superadmin', ['filter' => 'rbac:superadmin']);
 $routes->get('student_service/home', 'HomeController::index/student_service', ['filter' => 'rbac:student_service']);
 
+
+$routes->get('admin/add-student', 'AdminController::addStudentForm', ['filter' => 'rbac:admin']);
+$routes->get('superadmin/add-student', 'AdminController::addStudentForm', ['filter' => 'rbac:superadmin']);
+$routes->post('admin/add-student', 'AdminController::addStudent', ['filter' => 'rbac:admin']);
+$routes->post('superadmin/add-student', 'AdminController::addStudent', ['filter' => 'rbac:superadmin']);
+
+
+$routes->get('admin/show-students', 'AdminController::showStudents', ['filter' => 'rbac:admin']);
+$routes->get('superadmin/show-students', 'AdminController::showStudents', ['filter' => 'rbac:superadmin']);
+$routes->get('superadmin/show-students', 'AdminController::showStudents', ['filter' => 'rbac:student_service']);
+
+$routes->post('admin/show-students', 'AdminController::showStudents', ['filter' => 'rbac:admin']);
+$routes->post('superadmin/show-students', 'AdminController::showStudents', ['filter' => 'rbac:superadmin']);
+$routes->post('admin/show-students', 'AdminController::showStudents', ['filter' => 'rbac:admin']);
 // $routes->setDefaultController('index');
 // $routes->setAutoRoute(true);
 

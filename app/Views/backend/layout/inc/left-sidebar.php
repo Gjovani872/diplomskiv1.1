@@ -31,7 +31,21 @@
                         </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
+                <?php if (session()->get('role_name') == 'admin' || session()->get('role_name') == 'superadmin') : ?>
+                    <li class="dropdown">
+                        <a href="<?= base_url(session()->get('role_name') . '/add-student') ?>" class="dropdown-toggle no-arrow">
+                            <span class="micon bi bi-person-plus"></span><span class="mtext">Add Student</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
 
+                <?php if (in_array(session()->get('role_name'), ['admin', 'superadmin', 'student_service'])) : ?>
+                    <li class="dropdown">
+                        <a href="<?= base_url(session()->get('role_name') . '/show-students') ?>" class="dropdown-toggle no-arrow">
+                            <span class="micon bi bi-person-lines-fill"></span><span class="mtext">Show Students</span>
+                        </a>
+                    </li>
+                <?php endif; ?>
                 <li>
                     <div class="dropdown-divider"></div>
                 </li>

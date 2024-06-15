@@ -17,9 +17,13 @@ class RBACFilter implements FilterInterface
         }
 
         $role = $arguments[0] ?? null; // Get the role from the arguments
+
+        log_message('info', $role);
+
         if ($role && !$this->hasRole($userId, $role)) {
             return redirect()->to('/no-access-page')->with('error', 'You do not have permission to access this page.');
         }
+        return;
     }
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
@@ -48,4 +52,3 @@ class RBACFilter implements FilterInterface
         return false;
     }
 }
-

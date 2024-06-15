@@ -35,6 +35,7 @@ class Filters extends BaseFilters
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
         'rbac'          => \App\Filters\RBACFilter::class,
+        'admin_or_superadmin' => \App\Filters\RBACFilter::class,
     ];
 
     /**
